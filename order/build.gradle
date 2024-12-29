@@ -24,11 +24,6 @@ repositories {
 }
 
 dependencies {
-	// Jackson 의존성
-	implementation 'com.fasterxml.jackson.core:jackson-databind'
-	implementation 'com.fasterxml.jackson.core:jackson-core'
-	implementation 'com.fasterxml.jackson.core:jackson-annotations'
-
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
