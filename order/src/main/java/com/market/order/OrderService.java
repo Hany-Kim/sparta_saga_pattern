@@ -23,11 +23,9 @@ public class OrderService {
 
     public Order createOrder(OrderEndpoint.OrderRequestDto orderRequestDto) {
         Order order = orderRequestDto.toOrder();
-
-        orderStore.put(order.getOrderId(), order);
-
         DeliveryMessage deliveryMessage = orderRequestDto.toDeliveryMessage(order.getOrderId());
 
+        orderStore.put(order.getOrderId(), order);
         rabbitTemplate.convertAndSend(productQueue, deliveryMessage);
 
         return order;
