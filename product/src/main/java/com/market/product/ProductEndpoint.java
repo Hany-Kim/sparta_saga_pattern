@@ -17,4 +17,11 @@ public class ProductEndpoint {
         log.info("PRODUCT RECEIVE: {}", deliveryMessage.toString());
         productService.reduceProductAmount(deliveryMessage);
     }
+
+    @RabbitListener(queues = "${message.queue.err.product}")
+    public void receiveErrorMessage(DeliveryMessage deliveryMessage) {
+        log.info("ERROR RECEIVE !!!");
+        productService.rollbackProduct(deliveryMessage);
+    }
+
 }
